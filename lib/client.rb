@@ -3,7 +3,7 @@ class Client
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = nil
+    @id = attributes.fetch(:id)
     @stylist_id = attributes.fetch(:stylist_id)
   end
 
@@ -22,18 +22,27 @@ class Client
     client_array
   end
 
-  define_method(:==) do |another_client|
-    self.name().==(another_patient.name())
+  # define_method(:==) do |another_client|
+  #   self.name().==(another_patient.name())
+  # end
+  #
+  # define_singleton_method(:get_client_list) do |stylist_id|
+  #   returned_clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{stylist_id}")
+  #   client_group_array = []
+  #   returned_clients.each() do |client|
+  #     current_client = Client.new(:name => client.fetch('name'),:id => client.fetch('id'), :stylist_id => client.fetch('stylist_id'))
+  #     client_group_array.push(current_client)
+  #   end
+  #   client_group_array
+  # end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name)
+    DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{self.id()};")
   end
 
-  define_singleton_method(:get_client_list) do |stylist_id|
-    returned_clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{stylist_id}")
-    client_group_array = []
-    returned_clients.each() do |client|
-      current_client = Patient.new(:name => client.fetch('name'),:id => client.fetch('id'), :stylist_id => client.fetch('stylist_id'))
-      client_group_array.push(current_client)
-    end
-    client_group_array
+  define_method(:delete) do
+    DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
   end
 
 end
