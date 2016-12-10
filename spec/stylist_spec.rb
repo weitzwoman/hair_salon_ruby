@@ -44,28 +44,25 @@ describe(Stylist) do
 
   # describe('#clients') do
   #   it('returns all the clients of a stylist') do
-  #     client = Client.new({:name => 'Overdo Dawn', :id => nil})
-  #     client.save()
-  #     client2 = Client.new({:name => 'Dreaded Olive', :id => nil})
-  #     client2.save()
-  #     stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
-  #     stylist.save()
-  #     # not sure about :client_ids - see library
-  #     stylist.update(:client_ids => [client.id()])
-  #     stylist.update(:client_ids => [client2.id()])
-  #     expect(stylist.clients()).to(eq([client, client2]))
+  #     test_client = Client.new({:name => 'Overdo Dawn', :id => nil})
+  #     test_client.save()
+  #     test_client2 = Client.new({:name => 'Dreaded Olive', :id => nil})
+  #     test_client2.save()
+  #     test_stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+  #     test_stylist.save()
+  #     expect(test_stylist.clients()).to(eq([test_client, test_client2]))
   #   end
   # end
   #
-  # describe('#delete') do
-  #   it('lets you delete an stylist from the database') do
-  #     stylist = Stylist.new({:name => "Herman Melville", :id => nil})
-  #     stylist.save()
-  #     stylist2 = Stylist.new({:name => 'Jules Verne', :id => nil})
-  #     stylist2.save()
-  #     stylist.delete()
-  #     expect(Stylist.all()).to(eq([stylist2]))
-  #   end
-  # end
+  describe('#delete') do
+    it('lets you delete an stylist from the database') do
+      test_stylist = Stylist.new({:name => "Herman Melville", :id => nil})
+      test_stylist.save()
+      test_stylist2 = Stylist.new({:name => 'Jules Verne', :id => nil})
+      test_stylist2.save()
+      test_stylist.delete()
+      expect(Stylist.all()).to(eq([test_stylist2]))
+    end
+  end
 
 end
