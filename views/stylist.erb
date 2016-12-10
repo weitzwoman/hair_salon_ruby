@@ -1,0 +1,41 @@
+<div class="container">
+  <h3>Information for <%= @stylist.name() %></h3>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Update Stylist Name:</h4>
+      <form action="/stylist/<%= @stylist.id() %>" method="post">
+        <input name="_method" type="hidden" value="patch">
+        <input id="new_name" name="new_name" placeholder="Enter New Name">
+        <button type="submit" class="btn btn-info">Update Name</button>
+      </form>
+      <br>
+      <form action="/stylist/<%= @stylist.id() %>" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <button type="submit" class="btn btn-info">Delete Stylist from Database</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Add a Client to <%= @stylist.name() %>'s List:</h4>
+      <form action="/stylist/<%= @stylist.id() %>" method="post">
+        <div class="form-group">
+          <input id="client_name" name="client_name" placeholder="Client Name">
+        </div>
+        <button type="submit" class="btn btn-info">Add Client</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <% if @clients.any?() %>
+        <h4>Current Clients (click link to see information on individual Client):</h4>
+        <% @clients.each() do |client| %>
+        <a href="/client/<%= client.id() %>"><%= client.name() %></a><br>
+        <% end %>
+      <% else %>
+        <h4>There are no clients currently listed for this stylist!</h4>
+      <% end %>
+    </div>
+  </div>
+
+  <a href="/">Return to Homepage</a>
+</div>

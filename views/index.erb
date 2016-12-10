@@ -1,34 +1,24 @@
-<h1>Welcome to the Library of Your Dreams</h1>
-
-<div class="row">
-  <h3>Admin Only</h3>
-  <div class="col-md-6">
-    <form action="/add_stylist" method="post">
-      <h4>Add a stylist to the database:</h4>
-      <div class="form-group">
-        <input id="stylist_name" name="stylist_name" placeholder="Stylist Name">
-      </div>
-      <button type="submit" class="btn btn-info">Add Stylist</button>
-    </form>
+<div class="container">
+  <div class="row">
+    <h3>Admin Only</h3>
+    <div class="col-md-6">
+      <form action="/add_stylist" method="post">
+        <h4>Add a Stylist to the database:</h4>
+        <div class="form-group">
+          <input id="stylist_name" name="stylist_name" placeholder="Stylist Name">
+        </div>
+        <button type="submit" class="btn btn-info">Add Stylist</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <% if @stylists.any?() %>
+        <h4>Current Stylists (click link to see information on individual Stylist):</h4>
+        <% @stylists.each() do |stylist| %>
+          <a href="/stylist/<%= stylist.id() %>"><%= stylist.name() %></a><br>
+        <% end %>
+      <% else %>
+        <h4>There are no stylists currently listed in the database!</h4>
+      <% end %>
+    </div>
   </div>
-  <div class="col-md-6">
-    <form action="/add_client" method="post">
-      <h4>Add a client to the database:</h4>
-      <div class="form-group">
-        <input id="client_name" name="client_name" placeholder="Client Name">
-      </div>
-      <button type="submit" class="btn btn-info">Add Client</button>
-    </form>
-  </div>
-</div>
-
-<div class="row">
-  <% if @stylists.any?() %>
-    <h4>Current Stylists at the Hair Salon:</h4>
-    <% @stylists.each() do |stylist| %>
-      <a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a><br>
-    <% end %>
-  <% else %>
-    <h4>Add Stylists</h4>
-  <% end %>
 </div>
