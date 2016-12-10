@@ -47,4 +47,14 @@ class Client
     DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
   end
 
+  define_singleton_method(:get_client_group) do |stylist_id|
+    returned_clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{stylist_id};")
+    stylist_clients_array = []
+    returned_clients.each() do |client|
+      current_client = Client.new(:name => client.fetch('name'), :id => client.fetch('id').to_i, :stylist_id => client.fetch('stylist_id').to_i)
+      stylist_clients_array.push(current_client)
+    end
+    stylist_clients_array
+  end
+
 end

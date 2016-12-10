@@ -20,14 +20,19 @@
       <h4>Add a Client to <%= @stylist.name() %>'s List:</h4>
       <form action="/stylist/<%= @stylist.id() %>" method="post">
         <div class="form-group">
-          <input id="client_name" name="client_name" placeholder="Client Name">
+          <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+          <input id="client_name" name="client_name" placeholder="Client Name" class="form-control">
+          <button type="submit" class="btn btn-info">Add Client</button>
         </div>
-        <button type="submit" class="btn btn-info">Add Client</button>
       </form>
     </div>
     <div class="col-md-6">
       <% if @clients.any?() %>
         <h4>Current Clients (click link to see information on individual Client):</h4>
+          <ul>
+            <% Client.clients
+          </ul>
+
         <% @clients.each() do |client| %>
         <a href="/client/<%= client.id() %>"><%= client.name() %></a><br>
         <% end %>

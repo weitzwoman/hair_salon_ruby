@@ -52,4 +52,18 @@ describe(Client) do
     end
   end
 
+  describe('.get_client_group') do
+    it('returns all the clients of a stylist') do
+      new_client = Client.new(:name => 'Overdo Dawn', :id => nil, :stylist_id => 2)
+      new_client.save()
+      new_client1 = Client.new(:name => 'Wacky Wanda', :id => nil, :stylist_id => 2)
+      new_client1.save()
+      new_client2 = Client.new(:name => 'Dreaded Olive', :id => nil, :stylist_id => 3)
+      new_client2.save()
+
+      expect(Client.get_client_group(2)).to(eq([new_client, new_client1]))
+
+    end
+  end
+
 end
