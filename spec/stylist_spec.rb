@@ -9,33 +9,22 @@ describe(Stylist) do
     end
   end
 
-  # describe('#id') do
-  #   it('set its ID when you save it') do
-  #     @stylist.save()
-  #     expect(@stylist.id()).to(be_an_instance_of(Fixnum))
-  #   end
-  # end
-  #
-  # describe('.all') do
-  #   it('is empty at first') do
-  #     expect(Stylist.all()).to(eq([]))
-  #   end
-  # end
-  #
-  # describe('#save') do
-  #   it('saves stylist with name') do
-  #     @stylist.save()
-  #     expect(Stylist.all()).to(eq([@stylist]))
-  #   end
-  # end
-  #
-  # describe('#==') do
-  #   it('is the same stylist if the names of stylists are the same text') do
-  #     new_stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
-  #     expect(@stylist).to(eq(new_stylist))
-  #   end
-  # end
-  #
+  describe('#save') do
+    it('saves stylist with name') do
+      test_stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+      test_stylist.save()
+      expect(Stylist.all()).to(eq([test_stylist]))
+    end
+  end
+
+  describe('#==') do
+    it('is the same stylist if the names of stylists are the same text') do
+      test_stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+      new_stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+      expect(test_stylist).to(eq(new_stylist))
+    end
+  end
+
   # describe('.search') do
   #     it('returns an stylist name that you searched for') do
   #       @stylist.save()
