@@ -42,20 +42,14 @@ describe(Client) do
       expect(Client.find(test_client.id())).to(eq(test_client))
     end
   end
-#
-#   describe('.search') do
-#     it('returns a client that you searched for') do
-#       @client.save()
-#       expect(Client.search(@client.name())).to(eq([@client]))
-#     end
-#   end
-#
-#   describe('#update') do
-#     it('lets you update clients in the database') do
-#       @client.save()
-#       @client.update({:name => 'Ron Weasley', :id => nil})
-#       expect(@client.name()).to(eq('Ron Weasley'))
-#     end
-#   end
+
+  describe('#update') do
+    it('lets you update clients by name in the database') do
+      test_client = Client.new({:name => 'Harry Potter', :id => nil, :stylist_id => 1})
+      test_client.save()
+      test_client.update({:name => 'Ron Weasley'})
+      expect(test_client.name()).to(eq('Ron Weasley'))
+    end
+  end
 
 end
