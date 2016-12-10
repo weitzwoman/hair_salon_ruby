@@ -33,30 +33,15 @@ describe(Stylist) do
     end
   end
 
-  # describe('.search') do
-  #     it('returns an stylist name that you searched for') do
-  #       @stylist.save()
-  #       expect(Stylist.search(@stylist.name())).to(eq([@stylist]))
-  #     end
-  #   end
-  #
-  # describe('#update') do
-  #   it('lets you update stylists in the database') do
-  #     stylist = Stylist.new({:name => "Curly Shirley", :id => nil})
-  #     stylist.save()
-  #     stylist.update({:name => "Perma Polly"})
-  #     expect(stylist.name()).to(eq("Perma Polly"))
-  #   end
-  #   it('lets you add a client to an stylist') do
-  #     client = Client.new({:name => 'Overdo Dawn', :id => nil})
-  #     client.save()
-  #     stylist = Stylist.new({:name => 'Curly Shirley', :id => nil})
-  #     stylist.save()
-  #     stylist.update({:client_ids => [client.id()]})
-  #     expect(stylist.clients()).to(eq([client]))
-  #   end
-  # end
-  #
+  describe('#update') do
+    it('lets you update stylists by name in the database') do
+      test_stylist = Stylist.new({:name => "Curly Shirley", :id => nil})
+      test_stylist.save()
+      test_stylist.update({:name => "Perma Polly"})
+      expect(test_stylist.name()).to(eq("Perma Polly"))
+    end
+  end
+
   # describe('#clients') do
   #   it('returns all the clients of a stylist') do
   #     client = Client.new({:name => 'Overdo Dawn', :id => nil})

@@ -36,11 +36,11 @@ class Stylist
     stylist_id_found
   end
 
-  # define_method(:update) do |attributes|
-  #   @name = attributes.fetch(:name)
-  #   DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{self.id()};")
-  # end
-  #
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name)
+    DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{self.id()};")
+  end
+  
   # define_method(:clients) do
   #   stylist_clients = []
   #   clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()};")
