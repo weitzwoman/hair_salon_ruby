@@ -26,12 +26,16 @@ class Stylist
     self.name().==(another_stylist.name()).&(self.id().==(another_stylist.id()))
   end
 
-  # define_singleton_method(:find) do |stylist_id|
-  #   stylist_id_found = DB.exec("SELECT * FROM stylists WHERE id = '#{stylist_id}';").first()
-  #   found_stylist = Stylist.new(:name => stylist_id_found.fetch('name'), :id => stylist_id_found.fetch('id'))
-  #   found_stylist
-  # end
-  #
+  define_singleton_method(:find) do |stylist_id|
+    stylist_id_found = nil
+    Stylist.all().each() do |stylist|
+      if stylist.id() == stylist_id
+        stylist_id_found = stylist
+      end
+    end
+    stylist_id_found
+  end
+
   # define_method(:update) do |attributes|
   #   @name = attributes.fetch(:name)
   #   DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{self.id()};")

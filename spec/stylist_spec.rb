@@ -25,6 +25,14 @@ describe(Stylist) do
     end
   end
 
+  describe('.find') do
+    it('returns a stylist based on their unique id value') do
+      test_stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+      test_stylist.save()
+      expect(Stylist.find(test_stylist.id())).to(eq(test_stylist))
+    end
+  end
+
   # describe('.search') do
   #     it('returns an stylist name that you searched for') do
   #       @stylist.save()
