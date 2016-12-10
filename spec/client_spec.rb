@@ -8,25 +8,21 @@ describe(Client) do
     end
   end
 
-#   describe('.all') do
-#     it('is empty at first') do
-#       expect(Client.all()).to(eq([]))
-#     end
-#   end
-#
-#   describe('#save') do
-#     it('saves client with a name') do
-#       @client.save()
-#       expect(Client.all()).to(eq([@client]))
-#     end
-#   end
-#
-#   describe('#==') do
-#     it('is the same client if the names are the same text') do
-#       new_client = Client.new({:name => 'Harry Potter', :id => nil})
-#       expect(@client).to(eq(new_client))
-#     end
-#   end
+  describe('#save') do
+    it('saves client with a name') do
+      test_client = Client.new({:name => 'Harry Potter', :id => nil, :stylist_id => 1})
+      test_client.save()
+      expect(Client.all()).to(eq([test_client]))
+    end
+  end
+
+  describe('#==') do
+    it('is the same client if the names are the same text') do
+      test_client = Client.new({:name => 'Harry Potter', :id => nil, :stylist_id => 1})
+      new_client = Client.new({:name => 'Harry Potter', :id => nil, :stylist_id => 1})
+      expect(test_client).to(eq(new_client))
+    end
+  end
 #
 #   describe('#delete') do
 #     it('lets you delete a client in the database') do
