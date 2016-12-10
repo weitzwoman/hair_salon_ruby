@@ -35,12 +35,13 @@ describe(Client) do
     end
   end
 
-#   describe('.find') do
-#     it('lets you find the client by id') do
-#       @client.save()
-#       expect(Client.find(@client.id())).to(eq(@client))
-#     end
-#   end
+  describe('.find') do
+    it('lets you find the client by id') do
+      test_client = Client.new({:name => 'Harry Potter', :id => nil, :stylist_id => 1})
+      test_client.save()
+      expect(Client.find(test_client.id())).to(eq(test_client))
+    end
+  end
 #
 #   describe('.search') do
 #     it('returns a client that you searched for') do
