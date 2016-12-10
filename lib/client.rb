@@ -22,19 +22,13 @@ class Client
     client_array
   end
 
-  # define_method(:==) do |another_client|
-  #   self.name().==(another_patient.name())
-  # end
-  #
-  # define_singleton_method(:get_client_list) do |stylist_id|
-  #   returned_clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{stylist_id}")
-  #   client_group_array = []
-  #   returned_clients.each() do |client|
-  #     current_client = Client.new(:name => client.fetch('name'),:id => client.fetch('id'), :stylist_id => client.fetch('stylist_id'))
-  #     client_group_array.push(current_client)
-  #   end
-  #   client_group_array
-  # end
+  define_method(:==) do |another_client|
+    self.name().==(another_client.name()).&(self.id().==(another_client.id()))
+  end
+
+  define_singleton_method(:find) do |client_id|
+
+  end
 
   define_method(:update) do |attributes|
     @name = attributes.fetch(:name)
