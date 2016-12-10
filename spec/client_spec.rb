@@ -1,23 +1,13 @@
 require('spec_helper')
 
-# describe(Client) do
-#   before() do
-#     @client = Client.new({:name => 'Harry Potter', :id => nil})
-#   end
-#
-#   describe('#name') do
-#     it('returns the name of the client') do
-#       expect(@client.name()).to(eq('Harry Potter'))
-#     end
-#   end
-#
-#   describe('#id') do
-#     it("sets its ID when you save it") do
-#       @client.save()
-#       expect(@client.id()).to(be_an_instance_of(Fixnum))
-#     end
-#   end
-#
+describe(Client) do
+  describe('#initialize') do
+    it('returns the name of the client') do
+      test_client = Client.new({:name => 'Harry Potter', :id => nil, :stylist_id => 1})
+      expect(test_client.name()).to(eq('Harry Potter'))
+    end
+  end
+
 #   describe('.all') do
 #     it('is empty at first') do
 #       expect(Client.all()).to(eq([]))
@@ -70,4 +60,4 @@ require('spec_helper')
 #     end
 #   end
 
-# end
+end
