@@ -23,17 +23,18 @@ describe(Client) do
       expect(test_client).to(eq(new_client))
     end
   end
-#
-#   describe('#delete') do
-#     it('lets you delete a client in the database') do
-#       new_client = Client.new({:name => 'Ron Weasley', :id => nil})
-#       new_client.save()
-#       @client.save()
-#       @client.delete()
-#       expect(Client.all()).to(eq([new_client]))
-#     end
-#   end
-#
+
+  describe('#delete') do
+    it('lets you delete a client in the database') do
+      test_client = Client.new({:name => 'Harry Potter', :id => nil, :stylist_id => 1})
+      test_client.save()
+      test_client2 = Client.new({:name => 'Hermonine Granger', :id => nil, :stylist_id => 1})
+      test_client2.save()
+      test_client.delete()
+      expect(Client.all()).to(eq([test_client2]))
+    end
+  end
+
 #   describe('.find') do
 #     it('lets you find the client by id') do
 #       @client.save()
