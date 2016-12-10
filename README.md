@@ -13,23 +13,22 @@ _Works in any web browser. To run Hair Salon Application, in command line run:_
 ```
 $ git clone https://github.com/weitzwoman/hair_salon_ruby
 $ cd hair_salon_ruby
-$ postgres
-$ psql (optional, for editing the database directly)
 $ bundle
 $ ruby app.rb
 ```
 
-_Add SQL Database: in PSQL, run:_
-
+_On the command line in another tab, add SQL Database, run:_
 
 ```
+$ postgres
+$ psql
 CREATE DATABASE salon;
 \c salon;
-CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, client_id int);
-CREATE TABLE clients (id serial PRIMARY KEY, name varchar);
+CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);
+CREATE DATABASE salon_test WITH TEMPLATE salon;
 ```
 
-<!-- CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon; -->
 ## Support and contact details
 
 _Contact me on Github at [weitzwoman](https://github.com/weitzwoman)_
