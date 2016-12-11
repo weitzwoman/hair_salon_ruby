@@ -60,3 +60,15 @@ describe('change client name', {:type => :feature}) do
     expect(page).to have_content('Nicer Nate')
   end
 end
+
+describe('delete client', {:type => :feature}) do
+  it('allows user to delete client') do
+    stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+    stylist.save()
+    client = Client.new({:name => 'Weirdo Walter', :id => nil, :stylist_id => "#{stylist.id()}"})
+    client.save()
+    visit("/client/#{client.id()}")
+    click_button('Delete Client from Database')
+    expect(page).to have_content('Admin Only')
+  end
+end
