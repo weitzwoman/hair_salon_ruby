@@ -34,3 +34,16 @@ describe('delete stylist', {:type => :feature}) do
     expect(page).to have_content('Admin Only')
   end
 end
+
+describe('add client to stylist list', {:type => :feature}) do
+  it('allows user to add a client to individual stylist') do
+    stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+    stylist.save()
+    visit("/stylist/#{stylist.id()}")
+    fill_in('client_name', :with => 'Weirdo Walter')
+    click_button('Add Client')
+    click_link('Return to Homepage')
+    click_link('Wacky Wanda')
+    expect(page).to have_content('Weirdo Walter')
+  end
+end
