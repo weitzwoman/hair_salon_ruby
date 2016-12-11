@@ -24,3 +24,13 @@ describe('change stylist name', {:type => :feature}) do
     expect(page).to have_content('Moby Dick')
   end
 end
+
+describe('delete stylist', {:type => :feature}) do
+  it('allows user to delete stylist name from database') do
+    stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+    stylist.save()
+    visit("/stylist/#{stylist.id()}")
+    click_button('Delete Stylist from Database')
+    expect(page).to have_content('Admin Only')
+  end
+end
