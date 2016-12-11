@@ -6,6 +6,30 @@
 
 ## Specifications
 
+#### 1. Adds stylists and saves them to a Database
+* Input: Harry Potter
+* Output: Show link for individual stylist page
+
+#### 2. Allows user to update stylist name
+* Input: Ron Weasley
+* Output: Shows new name on individual stylist page
+
+#### 3. Allows user to delete stylist name
+* Input: click delete button
+* Output: removes individual stylist page
+
+#### 4. Allows user to add client to stylist
+* Input: add Client Name
+* Output: adds Client Name with unique client information page to Stylist page
+
+#### 5. Allows user to edit client name
+* Input: update Client name with new text
+* Output: edited new Client Name shows on unique client information page
+
+#### 5. Allows user to delete client name
+* Input: delete client
+* Output: unique client information page removed
+
 ## Setup/Installation Requirements
 
 _Works in any web browser. To run Hair Salon Application, in command line run:_
