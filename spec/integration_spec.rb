@@ -47,3 +47,16 @@ describe('add client to stylist list', {:type => :feature}) do
     expect(page).to have_content('Weirdo Walter')
   end
 end
+
+describe('change client name', {:type => :feature}) do
+  it('allows user to change client name') do
+    stylist = Stylist.new({:name => 'Wacky Wanda', :id => nil})
+    stylist.save()
+    client = Client.new({:name => 'Weirdo Walter', :id => nil, :stylist_id => "#{stylist.id()}"})
+    client.save()
+    visit("/client/#{client.id()}")
+    fill_in("new_name", :with => 'Nicer Nate')
+    click_button('Update Name')
+    expect(page).to have_content('Nicer Nate')
+  end
+end
