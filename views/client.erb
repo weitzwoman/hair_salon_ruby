@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Information for <%= @client.name() %></h3>
 
-  <h4>Update Stylist Name:</h4>
+  <h4>Update Client Name:</h4>
   <form action="/client/<%= @client.id() %>" method="post">
     <input name="_method" type="hidden" value="patch">
     <input id="new_name" name="new_name" placeholder="Enter New Name">

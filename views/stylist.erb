@@ -27,18 +27,12 @@
       </form>
     </div>
     <div class="col-md-6">
-      <% if @clients.any?() %>
-        <h4>Current Clients (click link to see information on individual Client):</h4>
-          <ul>
-            <% Client.clients
-          </ul>
-
-        <% @clients.each() do |client| %>
-        <a href="/client/<%= client.id() %>"><%= client.name() %></a><br>
+      <h4>Current Clients (click link to see information on individual Client):</h4>
+      <ul>
+        <% Client.get_client_group(@stylist.id()).each() do |client| %>
+          <li><a href="/client/<%= client.id() %>"><%= client.name() %></a></li>
         <% end %>
-      <% else %>
-        <h4>There are no clients currently listed for this stylist!</h4>
-      <% end %>
+      </ul>
     </div>
   </div>
 
